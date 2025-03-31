@@ -7,7 +7,7 @@ if __name__ == '__main__':
     index = random.randint(1, db.max_id())
 
     print('[A]dd Questions,\n[S]tart Trivia\n...')
-    user = input()
+    user = input().upper()
     while True:
         if user == 'A':
             print('How many questions?: ')
@@ -19,7 +19,7 @@ if __name__ == '__main__':
                 db.add_question(question)
             print('Succesfully added.')
             print('...\n[A]dd Questions\n[S]tart Trivia')
-            user = input()
+            user = input().upper()
 
         elif user == 'S' or user == 'C':
             try:
@@ -27,17 +27,19 @@ if __name__ == '__main__':
                 print(q.question)
                 print(q.options)
                 print('Choice (A,B,C,D): ')
-                user = input()
+                user = input().upper()
                 if user == q.answer:
                     print('Correct!')
                 else:
                     print(f'Incorrect. The correct answer was {q.answer}')
 
                 print('...\n[A]dd Questions\n[C]ontinue\n[D]elete Question')
-                user = input()
+                user = input().upper()
                 if user == 'D':
                     db.delete_question(index)
                     print('Question Deleted.')
+                    print('...\n[A]dd Questions\n[C]ontinue')
+                    user = input().upper()
                 index = random.randint(1, db.max_id())
             except TypeError:
                 if 1 <= index <= db.max_id():
