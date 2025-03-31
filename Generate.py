@@ -10,7 +10,7 @@ def get_questions(num: int) -> list[question_set]:
     response = requests.post(
         url = "https://openrouter.ai/api/v1/chat/completions",
         headers = {
-            "Authorization": "Bearer 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",
+            "Authorization": "Bearer <API KEY>",
             "Content-Type": "application/json"
         },
         data = json.dumps({
